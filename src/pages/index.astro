@@ -1,0 +1,25 @@
+---
+import Main from "@/layouts/Main.astro"
+import PodcastCard from "@/components/podcast/card.astro"
+import { podcastData } from "@/lib/constants"
+---
+
+<Main>
+	<div class="p-4 space-y-8">
+		<div class="flex items-center gap-x-4">
+			<button type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation" class="sm:hidden">
+				<span class="icon-[bx--menu] text-xl cursor-pointer" />
+			</button>
+			<h1 class="align-middle text-lg font-semibold">
+				Trending Podcasts
+			</h1>
+		</div>
+		<div class="podcast-grid">
+			{
+				podcastData?.map((p) => (
+					<PodcastCard key={p.id} id={p.id} imgUrl={p.imgURL} title={p.title} description={p.description} />
+				))
+			}
+		</div>
+	</div>
+</Main>
