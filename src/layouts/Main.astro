@@ -1,13 +1,25 @@
 ---
+import { supabase } from "@/lib/supabase"
 import Base from "./Base.astro"
 import SidebarLeft from "@/components/SidebarLeft.astro"
 import SidebarRight from "@/components/SidebarRight.astro"
+
+let { data, error } = await supabase.auth.getUser()
+let { email, sub } = data.user.user_metadata
+
+if (data === null || !sub.length || error) {
+    console.log("=== main")
+    console.log(data)
+    console.log("===")
+    console.log(error)
+    Astro.redirect("/auth/register")
+}
 ---
 
 <Base>
     <main class="bg-zinc-950 min-h-screen flex relative">
         <section id="drawer-navigation" aria-label="side-navigation" class="flex fixed top-0 left-0 z-40 w-52 transition-transform -translate-x-full sm:translate-x-0">
-            <SidebarLeft />
+            <SidebarLeft userId={sub} email={email}  />
         </section>
         <section class="text-stone-100 flex flex-1 flex-col sm:ml-52">
             <slot />

@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "brain-pod-astro",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -26,6 +26,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "zod": "^3.23.8"
   }
 }
