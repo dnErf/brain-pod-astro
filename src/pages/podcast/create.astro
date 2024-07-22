@@ -1,7 +1,15 @@
 ---
 import Main from "@/layouts/Main.astro"
+import MainHeader from "@/components/MainHeader.astro"
+import PodcastForm from "@/components/podcast/form.tsx"
 ---
 
 <Main>
-    create podcast
+    <div class="p-4 space-y-8">
+        <MainHeader heading="Create Podcast" />
+        <div>
+            <PodcastForm client:only="react" />
+        </div>
+    </div>
+    
 </Main>

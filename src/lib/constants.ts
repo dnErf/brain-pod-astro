@@ -56,3 +56,34 @@ export const podcastData = [
         "https://lovely-flamingo-139.convex.cloud/api/storage/221ee4bd-435f-42c3-8e98-4a001e0d806e",
     },
 ];
+
+export const voiceSelection = [
+  {
+    id: 0,
+    name: "none",
+  },
+  {
+    id: 1,
+    name: "alloy",
+  },
+  {
+    id: 2,
+    name: "echo",
+  },
+  {
+    id: 3,
+    name: "fable",
+  },
+  {
+    id: 4,
+    name: "onyx",
+  },
+  {
+    id: 5,
+    name: "nova",
+  },
+  {
+    id: 6,
+    name: "shimmer",
+  },
+];

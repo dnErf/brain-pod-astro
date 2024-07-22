@@ -22,16 +22,9 @@ import Auth from "@/layouts/Auth.astro"
                     <form id="form" class="space-y-4 md:space-y-6" action="/~api/auth" method="POST">
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium">Provider here your Email</label>
-                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="name@company.com" required="">
+                            <input type="email" name="email" id="email" class="input-text block w-full p-2.5" placeholder="name@company.com" required="">
                         </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-start">
-                                <div class="flex items-center h-5">
-                                  <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-gray-600 dark:ring-offset-gray-800">
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="bg-zinc-900 w-full py-2 px-4 text-sm">
+                        <button type="submit" class="btn w-full py-2 px-4 text-sm">
                             Register
                         </button>
                     </form>
