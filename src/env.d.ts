@@ -1,6 +1,7 @@
 /// <reference types="astro/client" />
 
 import type { SupabaseClient } from "@supabase/supabase-js"
+import type OpenAI from "openai"
 
 interface ImportMetaEnv {
     readonly SUPABASE_URL: string;
@@ -15,5 +16,6 @@ interface ImportMeta {
 declare namespace App {
     interface Locals {
         supabase: SupabaseClient;
+        openai: OpenAI;
     }
 }

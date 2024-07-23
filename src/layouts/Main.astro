@@ -4,16 +4,16 @@ import Base from "./Base.astro"
 import SidebarLeft from "@/components/SidebarLeft.astro"
 import SidebarRight from "@/components/SidebarRight.astro"
 
-let { data, error } = await supabase.auth.getUser()
-let { email, sub } = data.user.user_metadata
+// let { data, error } = await supabase.auth.getUser()
+// let { email, sub } = data?.user?.user_metadata
 
-if (data === null || !sub.length || error) {
-    console.log("=== main")
-    console.log(data)
-    console.log("===")
-    console.log(error)
-    Astro.redirect("/auth/register")
-}
+// if (error !== null) {
+//     console.error(error)
+// }
+
+let email = ""
+let sub = ""
+
 ---
 
 <Base>

@@ -3,8 +3,9 @@ import type { APIRoute } from "astro"
 export const POST: APIRoute = async ({ locals, request, redirect }) => {
     let fd = await request.formData()
     let email = fd.get("email").toString()
-
-    const { error } = await locals.supabase.auth.signInWithOtp({
+    let password = fd.get("password").toString()
+    
+    let { error } = await locals.supabase.auth.signInWithOtp({
         email: email,
         options: {
             emailRedirectTo: 'http://localhost:4321/~api/auth'
@@ -12,10 +13,11 @@ export const POST: APIRoute = async ({ locals, request, redirect }) => {
     })
 
     if (error) {
+        console.error(error)
         return redirect("/auth/register")
     }
 
-    return new Response(JSON.stringify({ message: "hello" }), { status: 200 })
+    return redirect("/auth/welcome")
 }
 
 export const GET: APIRoute = async ({ locals, cookies, redirect, url }) => {
@@ -33,7 +35,6 @@ export const GET: APIRoute = async ({ locals, cookies, redirect, url }) => {
     catch (err)
     {
         console.log(err)
-
         return redirect("/auth/register")
     }
 }

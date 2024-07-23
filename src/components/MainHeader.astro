@@ -1,0 +1,16 @@
+---
+interface Props {
+    heading?: string;
+}
+
+const { heading } = Astro.props
+---
+
+<div class="flex items-center gap-x-4">
+    <button type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation" class="sm:hidden">
+        <span class="icon-[bx--menu] text-xl cursor-pointer" />
+    </button>
+    <h1 class="align-middle text-lg font-semibold">
+        { heading }
+    </h1>
+</div>

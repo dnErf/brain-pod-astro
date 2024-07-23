@@ -6,4 +6,20 @@
     .podcast-grid {
         @apply grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 px-4;
     }
+
+    .btn {
+        @apply bg-zinc-900 hover:bg-zinc-700
+    }
+
+    .input-file-dark {
+        @apply dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+    }
+
+    .input-text {
+        @apply bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-gray-600 focus:border-gray-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500
+    }
+
+    .dropdown-btn {
+        @apply text-stone-100 bg-gray-700 hover:bg-gray-800 focus:outline-none dark:bg-gray-600 dark:hover:bg-gray-700
+    }
 }
