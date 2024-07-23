@@ -21,17 +21,19 @@ export default function() {
     }
 
     async function handleSubmit(event) {
-        if (voice === "none" || !voice.length) {
-            event.preventDefault()
-        }
-
         let fd = new FormData(event.currentTarget)
         fd.append("voice", voice)
 
-        // let au = fd.get("file_input") as File
-        // if (au !== null && au.name.length) {
+        let audioFile = fd.get("audio_file")
+
+        if (audioFile === "" || audioFile === null) {
+            console.log(audioFile)
+            event.preventDefault()
+        }
+
+        // TODO use LocalAI
+        // if (voice === "none" || !voice.length) {
         //     event.preventDefault()
-        //     console.log(au)
         // }
 
         await fetch("/~api/podcast", {
@@ -57,18 +59,15 @@ export default function() {
             </div>
             <div className="border h-0.5"></div>
             <div>
-                {/* text-gray-900 dark:text-white */}
                 <label className="block mb-2 text-sm font-medium" htmlFor="file_input">Upload Audio File <small>(mp3 | mp4)</small></label>
-                <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file_input" type="file" />
+                <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50" id="audio_file" name="audio_file" type="file" />
             </div>
             <div className="inline-flex items-center justify-center self-center w-2/3 border">
-                {/* <hr className="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" /> */}
                 <span className="absolute px-3 font-medium bg-zinc-950 text-stone-100 -translate-x-1/2  left-1/2 dark:text-white dark:bg-gray-900">or</span>
             </div>
             <div className="relative">
                 <label htmlFor="dropdown-btn" className="block mb-2 text-sm font-medium">Select Voice Prompt</label>
                 <div className="flex items-center gap-4">
-                    {/* text-sm text-center inline-flex items-center */}
                     <div id="dropdown-btn" ref={dropdownTriggerRef}  className="dropdown-btn px-4 py-2 font-medium rounded-lg flex items-center w-full justify-between text-sm">
                         <input type="button" onClick={handleVoiceSelect} value={voice} />
                         <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -110,24 +109,8 @@ export default function() {
                 <div className="border h-0.5"></div>
             }
             <button className="btn text-sm p-2 rounded-lg font-semibold" type="submit">
-                Generate Voice Prompt
+                Submit
             </button>
-            {/* <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="file_input">Upload file</label>
-                    <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" />
-                </div> 
-            */}
-            
         </form>
     )
 }
-
-/**
- * { voice }
-<button id="dropdown-btn" ref={dropdownTriggerRef}  className="dropdown-btn px-4 py-2 " type="button">
-                        Select a Voice Prompt 
-                        <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                    </button>
- */

@@ -6,11 +6,11 @@ export const POST: APIRoute = async ({ locals, request }) => {
     let description = fd.get("description")
     let prompt = fd.get("prompt")
     let voice = fd.get("voice")
-    let fileInput = fd.get("file_input") as File
-    let fileBuf = await fileInput.arrayBuffer()
+    let audioFile = fd.get("audio_file") as File
+    let audioBuf = await audioFile.arrayBuffer()
 
-    const { data, error} = await locals.supabase.storage.from("temp").upload(fileInput.name, Buffer.from(fileBuf), {
-        contentType: fileInput.type
+    const { data, error} = await locals.supabase.storage.from("temp").upload(audioFile.name, Buffer.from(audioBuf), {
+        contentType: audioFile.type
     })
 
     if (error) {
